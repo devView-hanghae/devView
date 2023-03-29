@@ -27,14 +27,16 @@ def modal_post():
    videoname_receive = request.form['videoname_give']
    videodesc_receive = request.form['videodesc_give']
    videolink_receive = request.form['videolink_give']
-   commentId_receive = request.form['id_give']
+   board_receive = request.form['id_give']
+   url_receive = request.form['url_give']
 
    doc = {
       
-      'commentId' : commentId_receive,
+      'boardId' : board_receive,
       'videoname' :  videoname_receive,
       'videodesc' : videodesc_receive,
-      'videolink' :   videolink_receive
+      'videolink' :   videolink_receive,
+      'url' :     url_receive
    }
    db.value.insert_one(doc)
    print(doc)
