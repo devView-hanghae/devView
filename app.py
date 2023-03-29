@@ -31,7 +31,7 @@ def modal_post():
 
    doc = {
       
-      'commentId':commentId_receive,
+      'commentId' : commentId_receive,
       'videoname' :  videoname_receive,
       'videodesc' : videodesc_receive,
       'videolink' :   videolink_receive
