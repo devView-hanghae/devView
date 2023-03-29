@@ -23,11 +23,15 @@ def home():
 
 @app.route('/modal', methods=['POST'])
 def modal_post():
+
    videoname_receive = request.form['videoname_give']
    videodesc_receive = request.form['videodesc_give']
    videolink_receive = request.form['videolink_give']
+   commentId_receive = request.form['id_give']
 
    doc = {
+      
+      'commentId':commentId_receive,
       'videoname' :  videoname_receive,
       'videodesc' : videodesc_receive,
       'videolink' :   videolink_receive

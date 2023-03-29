@@ -56,28 +56,37 @@
       const videoNameVal = document.querySelector("#video-name");
       const videoDescVal = document.querySelector("#video-desc");
       const videoLinkVal = document.querySelector("#video-link");
-
+      let commentId = Date.now();
+      console.log(commentId);
       function handleEvent(e) {
         e.preventDefault();
-        let formData = new FormData();
-        formData.append("videoname_give", videoNameVal.value);
-        formData.append("videodesc_give", videoDescVal.value);
-        formData.append("videolink_give", videoLinkVal.value);
+        if (videoLinkVal.value == "") {
+          alert("url을 입력하세요");
+        } else if (!(videoLinkVal.value.substring(0, 4) == "http")) {
+          alert("유효한 url형식이 아닙니다.");
+          console.log(videoLinkVal.value);
+        } else {
+          let formData = new FormData();
+          formData.append("videoname_give", videoNameVal.value);
+          formData.append("videodesc_give", videoDescVal.value);
+          formData.append("videolink_give", videoLinkVal.value);
+          formData.append("id_give", commentId);
 
-        fetch("/modal", {
-          headers: {
-            Accept: "application / json",
-          },
-          method: "POST",
-          body: formData,
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            window.location.reload();
+          fetch("/modal", {
+            headers: {
+              Accept: "application / json",
+            },
+            method: "POST",
+            body: formData,
           })
-          .catch((error) => {
-            console.log(error);
-          });
+            .then((res) => res.json())
+            .then((data) => {
+              window.location.reload();
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
       }
 
       function handleModalClose() {
