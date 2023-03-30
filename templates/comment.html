@@ -4,46 +4,43 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/index.css" />
+    <script
+      src="https://kit.fontawesome.com/095ffe8916.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Document</title>
-    <link rel="stylesheet" href="/static/css/index.css" />
   </head>
+
   <body>
-    <p>댓글</p>
-    <table class="comment_main">
-      <tr>
-        <td class="number_list">1</td>
-        <td class="comment_list">댓글</td>
-      </tr>
-    </table>
-    <div>
-      <input class="comment" />
+    <div class="wrap">
+      {% include 'navbar.html' %}
+
+      <div class="container">
+        <section class="banner">
+          <h1>JavaScript</h1>
+        </section>
+
+        <section class="search">
+          <input
+            type="text"
+            name="keyword"
+            id=""
+            placeholder="검색어를 입력하세요"
+          />
+          <span id="searchIcon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </span>
+        </section>
+
+        <section class="write">
+          <button>추천영상공유</button>
+        </section>
+
+        <section class="list"></section>
+      </div>
     </div>
-    <form name="myform" id="myform" method="post" action="./save">
-      <span>별점선택</span>
-      <fieldset>
-        <input type="radio" name="rating" value="5" id="rate1" /><label
-          for="rate1"
-          >⭐</label
-        >
-        <input type="radio" name="rating" value="4" id="rate2" /><label
-          for="rate2"
-          >⭐</label
-        >
-        <input type="radio" name="rating" value="3" id="rate3" /><label
-          for="rate3"
-          >⭐</label
-        >
-        <input type="radio" name="rating" value="2" id="rate4" /><label
-          for="rate4"
-          >⭐</label
-        >
-        <input type="radio" name="rating" value="1" id="rate5" /><label
-          for="rate5"
-          >⭐</label
-        >
-      </fieldset>
-      <button class="comment_button">댓글등록</button>
-    </form>
+
     <script src="../static/js/comment.js"></script>
   </body>
 </html>

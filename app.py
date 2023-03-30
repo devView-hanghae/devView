@@ -1,12 +1,12 @@
 
 import json
 with open("config.json", "r", encoding="utf-8") as f:
-    config = json.load(f)
+  config = json.load(f)
 
 # pymongo
 from pymongo import MongoClient
 client = MongoClient(config["dbUrl"])
-db = client.dbView
+db = client.dbTest
 
 # flask
 from flask import Flask, render_template, request, jsonify
@@ -16,28 +16,37 @@ app = Flask(__name__)
 def home():
 	return render_template('comment.html')
 
-@app.route('/comment', methods=['POST'])
-def comment_post():
-	comment_receive = request.form['comment_give']
-	rating_receive = request.form['rating_give']
+@app.route('/search', methods=['POST'])
+def search():
+    # POST 요청으로부터 검색어를 가져옴
+    keyword = request.json['keyword']
+
+    # MongoDB에서 검색
+    result = db.value.find({'$or': [{'videoname': {'$regex': keyword}},{'videodesc': {'$regex': keyword}}]})
+    # 검색 결과를 리스트로 변환
+    data = []
+    for doc in result:
+        data.append({
+            'videoname': doc['videoname'],
+            'videodesc': doc['videodesc'],
+            'videolink': doc['videolink'],
+
+        })
+
+    # 검색 결과를 JSON 형태로 반환
+    return jsonify(data)
 
 
-	doc ={
-		'comment':comment_receive,
-		'rating':rating_receive
-	}
-
-	db.comment.insert_one(doc)
-
-	return jsonify({'msg':'저장완료!'})
 
 
-@app.route("/comment", methods=["GET"])
-def comment_get():
-    comment_data = list(db.comment.find({},{'_id':False}))
-#mongoDB에서 저장되어있는 데이터 전체를 불러오고 mars_data라는 변수에 넣어준다.
-    return jsonify({'result':comment_data})
-#불러온 데이터를 result로 프론트에 보내준다.
+
+@app.route("/modal", methods=["GET"])
+def value_get():
+  value_data = list(db.value.find({},{'_id':False}))
+	
+#mongoDB에서 저장되어있는 데이터 전체를 불러오고 mars_data라는 변수에 넣어준다.\
+
+  return jsonify({'result':value_data})
 
 
 # flask port
