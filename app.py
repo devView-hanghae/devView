@@ -42,7 +42,7 @@ def search():
   # POST 요청으로부터 검색어를 가져옴
   keyword = request.json['keyword']
   # MongoDB에서 검색
-  result = db.board.find({'videoname': {'$regex': keyword}})
+  result = db.board.find({'$or':[{'videoname': {'$regex': keyword}},{'videodesc': {'$regex': keyword}}]})
   # 검색 결과를 리스트로 변환
   data = []
   for doc in result:
