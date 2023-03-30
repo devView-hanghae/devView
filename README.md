@@ -17,6 +17,8 @@
 2023-03-27 ~ 2023-03-30
 
 ## <와이어프레임/>
+###메인
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/22d1ef64-8718-4367-8349-8c6eca5c81bd/Untitled.png)
 
 ## <구현 기능/>
 - 댓글 기능
