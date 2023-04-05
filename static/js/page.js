@@ -40,8 +40,6 @@ document.querySelector('#searchIcon').addEventListener('click', async () => {
 
 // 리스트 보여주기
 function append_list(rows) {
-
-  console.log(rows)
   const element = document.querySelector('.list');
   element.replaceChildren();
 
@@ -49,8 +47,6 @@ function append_list(rows) {
     const videolink = element['videolink'];
     const thumbnail = videolink.slice(32);
     let link = '';
-
-    console.log(thumbnail.length)
 
     if (thumbnail.length === 11) {
       link = `https://i1.ytimg.com/vi/${thumbnail}/sddefault.jpg`;
@@ -65,15 +61,9 @@ function append_list(rows) {
             <img src="${link}" alt="">
           </a>
         </div>
-        <div class="itemList">
-          <div class="item__desc">
-            <h1>${element['videoname']}</h1>
-            <p>${element['videodesc']}</p>
-          </div>
-          <!-- 댓글 들어가는 영역 -->
-          <div class="item__comment">
-            <!-- 여기에 댓글 html 작성 -->
-          </div>
+        <div class="itemDesc">
+          <h1>${element['videoname']}</h1>
+          <p>${element['videodesc']}</p>
         </div>
       </div>
     `;

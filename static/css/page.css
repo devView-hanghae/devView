@@ -73,10 +73,9 @@ button {
 
 .item {
   width: 49%;
-  height: 476px;
+  height: 440px;
 	margin-bottom: 40px;
 	border-bottom: 1px solid #cdcdcd;
-  /* display: flex; */
 }
 
 .itemImage {
@@ -86,9 +85,6 @@ button {
  
 }
 
-
-
-
 .itemImage a img {
   width: 100%;
   height: 320px;
@@ -97,21 +93,18 @@ button {
 
 .itemImage a{
   transition: .3s ease;
- 
 }
 
 .itemImage :hover{
   transform: scale(1.1);
 }
 
-.item__desc h1 {
+.itemDesc h1 {
   font-size: 32px;
-	margin-top: 12px;
-	padding-bottom: 8px;
-
+  margin-bottom: 15px;
 }
 
-.item__desc p {
+.itemDesc p {
   margin: 10px 0;
   font-size: 14px;
   color: #737373;
