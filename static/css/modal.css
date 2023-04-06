@@ -12,11 +12,12 @@
 
 .modal-open{
   transition:all .3s ease;
- 
 }
+
 .modal-open:hover{
   background-color: #391489;
 }
+
 .modal_body {
   position: absolute;
   top: 50%;
@@ -28,6 +29,7 @@
   box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
   transform: translateX(-50%) translateY(-50%);
 }
+
 .modal-wrap h1 {
   font-size: 32px;
 }
@@ -78,7 +80,8 @@
 }
 
 .modal-close {
-  background-color: #fff;
+  color: black;
+  background-color: transparent;
   border-radius: 50%;
   position: absolute;
   top: 32px;

@@ -54,10 +54,10 @@ function handleModalClose() {
 }
 
 function handleModalOpen() {
-  debugger
   modal.style.display = "block";
   body.style.overflow = "hidden";
 }
+
 btnSumit.addEventListener("click", handleEvent);
 btnModalOpen.addEventListener("click", handleModalOpen);
 btnModalClose.addEventListener("click", handleModalClose);
